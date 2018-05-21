@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DzialyController">
+   <children>
+      <Button fx:id="Wstecz" layoutY="2.0" mnemonicParsing="false" onAction="#back" text="Wstecz" />
+      <ListView fx:id="FXList" layoutY="41.0" prefHeight="360.0" prefWidth="120.0" />
+      <ListView fx:id="FXList1" layoutX="120.0" layoutY="41.0" prefHeight="360.0" prefWidth="120.0" />
+      <ListView fx:id="FXList11" layoutX="240.0" layoutY="41.0" prefHeight="360.0" prefWidth="120.0" />
+      <VBox layoutX="475.0" layoutY="41.0" prefHeight="360.0" prefWidth="128.0">
+         <children>
+            <TextField fx:id="updateIDDzialu" promptText="ID dzialu do edycji" />
+            <TextField fx:id="updateNazwaDzialuText" promptText="Nazwa dzialu" />
+            <TextField fx:id="updateIDKierText" promptText="ID kierownika" />
+            <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateInfo" prefHeight="25.0" prefWidth="130.0" text="ZAAKTUALIZUJ" />
+         </children>
+      </VBox>
+      <Label layoutX="475.0" layoutY="19.0" prefHeight="13.0" prefWidth="128.0" text="Zaaktualizuj informacje" />
+   </children>
+</Pane>
