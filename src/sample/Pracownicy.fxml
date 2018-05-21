@@ -31,5 +31,11 @@
          </children>
       </VBox>
       <Label layoutX="478.0" layoutY="19.0" prefHeight="17.0" prefWidth="102.0" text="Dodaj pracownika" />
+      <Label layoutX="16.0" layoutY="28.0" text="ID" />
+      <Label layoutX="70.0" layoutY="28.0" text="Imie" />
+      <Label layoutX="145.0" layoutY="28.0" text="Nazwisko" />
+      <Label layoutX="241.0" layoutY="28.0" text="Pensja" />
+      <Label layoutX="302.0" layoutY="28.0" text="Staz" />
+      <Label layoutX="380.0" layoutY="28.0" text="Stanowisko" />
    </children>
 </Pane>
