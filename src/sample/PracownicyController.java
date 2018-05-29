@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -33,15 +34,15 @@ public class PracownicyController {
     private int nOfEmp;
 
 
-    ObservableList listID = FXCollections.observableArrayList();
+    static ObservableList listID = FXCollections.observableArrayList();
     ObservableList listImie = FXCollections.observableArrayList();
     ObservableList listNazwisko = FXCollections.observableArrayList();
     ObservableList listPensja = FXCollections.observableArrayList();
     ObservableList listStaz = FXCollections.observableArrayList();
     ObservableList listStanowisko = FXCollections.observableArrayList();
-    DBConnect connect = new DBConnect();
+   static DBConnect connect = new DBConnect();
     @FXML
-    ListView<String> FXListID;
+   static ListView<String> FXListID;
     @FXML ListView<String> FXListImie;
     @FXML ListView<String> FXListNazwisko;
     @FXML ListView<String> FXListPensja;
@@ -119,6 +120,32 @@ public class PracownicyController {
         connect.addEmployee(Imie,Nazwisko,Pensja,Staz,Stanowisko);
     }
 
+    public int getRandromKierownik() throws SQLException {
+        ResultSet rs = connect.getData("pracownicy");
+        Random r=new Random();
+        int size=0;
+        int ID,rowManager;
+        while(rs.next())
+        {
+            size++;
+        }
+
+        rowManager=r.nextInt(size);
+        int a=1;
+        ResultSet as=connect.getData("pracownicy");
+
+        while(a<rowManager)
+        {
+            as.next();
+            a++;
+        }
+
+        String idd = as.getString("idPracownicy");
+        ID=Integer.parseInt(idd);
+        System.out.println(ID);
+        return ID;
+    }
+
     public void usunPrac(ActionEvent actionEvent) throws SQLException {
         int toDel = Integer.parseInt(toDelText.getText());
         try
@@ -131,5 +158,26 @@ public class PracownicyController {
             toDelText.setText("!KLUCZ OBCY!");
         }
         
+    }
+
+    public static void dodaj1000()
+    {
+        Random r=new Random();
+        for(int i=0; i<10000; i++)
+        {
+            String Imie, Nazwisko, Stanowisko;
+            int Pensja, Staz;
+            Pensja=r.nextInt(10000);
+            Staz=r.nextInt(50);
+            Imie = RandomString.generate(7);
+            Nazwisko = RandomString.generate(10);
+            Stanowisko = RandomString.generate(10);
+
+            try {
+                connect.addEmployee(Imie,Nazwisko,Pensja,Staz,Stanowisko);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

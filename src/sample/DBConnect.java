@@ -58,7 +58,14 @@ public class DBConnect {
         addToDB(query);
     }
 
-    public void addToDB(String query) throws SQLException
+    public void addDepartment(String nazwa, int ID) throws SQLException {
+        String IDs=Integer.toString(ID);
+        String query=  "INSERT INTO dzialy (Nazwa_dzialu, pracownicy_idPracownicy_kierownik) VALUES (\"" +nazwa +"\",\"" + IDs + "\");";
+        System.out.println(query);
+        addToDB(query);
+    }
+
+    private void addToDB(String query) throws SQLException
     {
         st.executeUpdate(query);
     }

@@ -32,10 +32,11 @@ public class DzialyController {
     ObservableList list = FXCollections.observableArrayList();
     ObservableList list1 = FXCollections.observableArrayList();
     ObservableList list11 = FXCollections.observableArrayList();
-    DBConnect connect = new DBConnect();
+    static DBConnect connect = new DBConnect();
     @FXML ListView<String> FXList;
     @FXML ListView<String> FXList1;
     @FXML ListView<String> FXList11;
+    static PracownicyController PController = new PracownicyController();
 
     public  void initialize() throws SQLException {
 
@@ -73,5 +74,19 @@ public class DzialyController {
         int IDKierowinika=Integer.parseInt(updateIDKierText.getText());
         int IDtoUpdate = Integer.parseInt(updateIDDzialu.getText());
         connect.updateDepartments(IDtoUpdate,Nazwa,IDKierowinika);
+    }
+
+    public static void dodaj10000() throws SQLException {
+        String nazwa;
+        int idKierownika;
+
+        for(int i=0; i<10000; i++)
+        {
+            nazwa = RandomString.generate(10);
+            idKierownika = PController.getRandromKierownik();
+            connect.addDepartment(nazwa,idKierownika);
+        }
+
+
     }
 }
